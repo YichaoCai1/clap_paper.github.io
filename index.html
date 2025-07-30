@@ -2,390 +2,190 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
-  <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="DESCRIPTION META TAG">
-  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
-  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
-  <meta property="og:url" content="URL OF THE WEBSITE"/>
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta name="description" content="CLAP: ECCV 2024. We isolate content from style in CLIP representations via contrastive learning with augmented prompts, enabling more robust and generalizable vision-language models.">
+  <meta property="og:title" content="CLAP: Isolating Content from Style with Augmented Prompts – ECCV 2024"/>
+  <meta property="og:description" content="We disentangle content and style in vision-language models through contrastive learning with augmented prompts."/>
+  <meta property="og:url" content="https://yichaocai.com/clap-eccv24/"/>
+  <!-- FontAwesome 5 via CDN for all icons (PDF, GitHub, etc) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Academicons for arXiv -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <meta property="og:image" content="static/images/teaser_img.png" />
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
-
-
-  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
-  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:title" content="CLAP: Isolating Content from Style (ECCV 2024)">
+  <meta name="twitter:description" content="We disentangle content and style in CLIP representations for robust vision-language models.">
+  <meta name="twitter:image" content="static/images/teaser_img.png">
   <meta name="twitter:card" content="summary_large_image">
-  <!-- Keywords for your paper to be indexed by-->
-  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="keywords" content="multimodal learning, contrastive learning, CLIP, content, style, ECCV 2024, vision-language">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
   <title>CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts</title>
-  <!-- <link rel="icon" type="image/x-icon" href="static/images/CLAP_icon.ico"> -->
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-  rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script src="static/js/bulma-carousel.min.js"></script>
-  <script src="static/js/bulma-slider.min.js"></script>
-  <script src="static/js/index.js"></script>
 </head>
 <body>
-
-
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts</h1>
-            <div class="is-size-5 publication-authors">
-              <!-- Paper authors -->
-              <span class="author-block">
-                <a href="https://yichaocai.com/" target="_blank">Yichao Cai, </a></span>
-                  <span class="author-block">
-                    <a href="https://sites.google.com/view/yuhangliu/homepage" target="_blank">Yuhang Liu, </a></span>
-                  <span class="author-block">
-                    <a href="https://zzhang.org/" target="_blank">Zhen Zhang, </a></span>
-                    <span class="author-block">
-                      <a href="https://cs.adelaide.edu.au/~javen/" target="_blank">Javen Qinfeng Shi</a>
-                  </span>
-                  </div>
-
-                  <div class="is-size-5 publication-authors">
-                    <span class="author-block">Australian Institute for Machine Learning (AIML), The University of Adelaide<br>ECCV 2024</span>
-                    <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
-                  </div>
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- Arxiv PDF link -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/2311.16445" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-
-                    <!-- Supplementary PDF link -->
-                    <!-- <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span> -->
-
-                  <!-- Github link -->
-                  <span class="link-block">
-                    <a href="https://github.com/YichaoCai1/CLAP" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-
-                <!-- ArXiv abstract Link -->
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/2311.16445" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- Teaser video-->
-<section class="hero teaser">
+<!-- Header -->
+<section class="section" style="padding-bottom:0;">
   <div class="container is-max-desktop">
-    <div class="hero-body">
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/teaser_img.png" alt="MY ALT TEXT"/>
+    <div class="columns is-vcentered is-multiline">
+      <div class="column is-8-desktop is-12-mobile">
+        <h1 class="title is-1" style="line-height:1.18;">CLAP: Isolating Content from Style<br>through Contrastive Learning with Augmented Prompts</h1>
+        <div class="is-size-5">
+          <span class="author-block"><a href="https://yichaocai.com/" target="_blank">Yichao Cai</a>, </span>
+          <span class="author-block"><a href="https://sites.google.com/view/yuhangliu/homepage" target="_blank">Yuhang Liu</a>, </span>
+          <span class="author-block"><a href="https://zzhang.org/" target="_blank">Zhen Zhang</a>, </span>
+          <span class="author-block"><a href="https://cs.adelaide.edu.au/~javen/" target="_blank">Javen Qinfeng Shi</a></span>
+        </div>
+        <div class="is-size-6" style="margin-top:0.5em;">
+          <span class="author-block">Australian Institute for Machine Learning (AIML), The University of Adelaide</span>
+        </div>
       </div>
-      <h2 class="subtitle has-text-centered">
-        A qualitative comparison of image features for zero-shot classification using 'a photo of a [class name]' prompts shows that CLIP's features initially emphasize style over content. While both image and text augmentations shift the focus towards content-specific features, text augmentation is significantly more effective in enhancing this focus.
-      </h2>
-    </div>
-  </div>
-</section>
-<!-- End teaser video -->
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Contrastive vision-language models, such as CLIP, have garnered considerable attention for various dowmsteam tasks, mainly due to the remarkable ability of the learned features for generalization. However, the features they learned often blend content and style information, which somewhat limits their generalization capabilities under distribution shifts. To address this limitation, we adopt a causal generative perspective for multimodal data and propose contrastive learning with data augmentation to disentangle content features from the original representations. To achieve this, we begin with exploring image augmentation techniques and develop a method to seamlessly integrate them into pretrained CLIP-like models to extract pure content features. Taking a step further, recognizing the inherent semantic richness and logical structure of text data, we explore the use of text augmentation to isolate latent content from style features. This enables CLIP-like model's encoders to concentrate on latent content information, refining the learned representations by pre-trained CLIP-like models. Our extensive experiments across diverse datasets demonstrate significant improvements in zeroshot and few-shot classification tasks, alongside enhanced robustness to various perturbations. These results underscore the effectiveness of our proposed methods in refining vision-language representations and advancing the state-of-the-art in multimodal learning. 
-          </p>
+      <div class="column is-4-desktop is-12-mobile has-text-centered">
+        <div class="publication-links" style="margin-top:1rem;">
+          <a href="https://github.com/YichaoCai1/CLAP" target="_blank" class="external-link button is-normal is-rounded is-dark">
+            <span class="icon"><i class="fab fa-github"></i></span>
+            <span>Code</span>
+          </a>
+          <a href="https://arxiv.org/abs/2311.16445" target="_blank" class="external-link button is-normal is-rounded is-dark">
+            <span class="icon"><i class="ai ai-arxiv"></i></span>
+            <span>arXiv</span>
+          </a>
+          <a href="https://arxiv.org/pdf/2311.16445" target="_blank" class="external-link button is-normal is-rounded is-info">
+            <span class="icon"><i class="fas fa-file-pdf"></i></span>
+            <span>Download PDF</span>
+          </a>
+          <span class="external-link button is-normal is-rounded venue-btn">
+            <span class="icon"><i class="fas fa-award"></i></span>
+            <span>ECCV 2024</span>
+          </span>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End paper abstract -->
 
-
-<!-- Causal generative model -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <hr>
-      <div class="columns is-centered has-text-centered">
-        <h2 class="title is-3">A Causal Generative Model for Multi-Modal Data</h2>
-      </div>
-
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="item">
-            <!-- Your image here -->
-            <img src="static/images/generative_model.png" alt="MY ALT TEXT"/>
-            <h3 class="subtitle has-text-centered">
-              Image and text data, derived from a unified latent space with content and style, follow distinct deterministic processes. The class label is determined solely by the latent content. (a) Soft interventions on style variables generate augmented images. (b) Similar interventions produce augmented text due to the shared latent space.
-            </h3>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- TLDR -->
+<div class="container is-max-desktop">
+  <div class="tldr-card">
+    <p class="has-text-centered is-size-5" style="margin-bottom:0;">
+      ✨ <strong>TL;DR:</strong> We disentangle content from style in CLIP by leveraging contrastive learning with augmented prompts.<br>
+      Our method yields more robust and generalizable vision-language representations.
+    </p>
   </div>
-</section>
-<!-- Causal generative model -->
+</div>
 
-
-<!-- Method Overview -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <hr>
-      <div class="columns is-centered has-text-centered">
-      <h2 class="title is-3">Refining CLIP via Isolating Content from Style with Data Augmentation</h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/method_overview.png" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Contrastive learning with data augmentation in one modality benefits both, with text data being more amendable for style changes due to its semantic structure. The trained adapting network can be seamlessly applied in both modality for zero-shot inference.
-        </h2>
-      </div>
-      
-      <div id="results-carousel" class="carousel results-carousel">         
-        <div class="columns is-centered has-text-centered">
-          <div class="item">
-            <!-- Your image here -->
-            <img src="static/images/imaug_me.png" alt="MY ALT TEXT"/>
-            <h2 class="subtitle has-text-centered">
-              Isolating content from style with image augmentation.
-            </h2>
-          </div>
-        </div> 
-
-        <div class="columns is-centered has-text-centered">
-          <div class="item">
-            <!-- Your image here -->
-            <img src="static/images/clap_me.png" alt="MY ALT TEXT"/>
-            <h2 class="subtitle has-text-centered">
-              Isolating content from style with text augmentation.
-            </h2>
-          </div> 
-          </div>
-      </div>
-    </div>
+<!-- Abstract (boxed) -->
+<div class="container is-max-desktop">
+  <div class="section-plain">
+    <h2 class="title is-3 has-text-centered">Abstract</h2>
+    <p class="content has-text-justified">
+      Contrastive vision-language models, such as CLIP, have garnered considerable attention for various downstream tasks, mainly due to the remarkable ability of the learned features for generalization. However, the features they learn often blend content and style information, which limits their generalization under distribution shifts. To address this, we adopt a causal generative perspective and propose contrastive learning with data augmentation to disentangle content from style. We explore both image and text augmentations, enabling CLIP-like encoders to concentrate on latent content information. Our extensive experiments demonstrate significant improvements in zero-shot and few-shot classification, alongside enhanced robustness to various perturbations. These results underscore the effectiveness of our approach in refining vision-language representations.
+    </p>
   </div>
-</section>
-<!-- Method Overview -->
+</div>
 
+<!-- Key Contributions -->
+<div class="container is-max-desktop">
+  <div class="section-highlight">
+    <h2 class="title is-3 has-text-centered">Key Contributions</h2>
+    <ul class="content" style="font-size:1.12em;">
+      <li>📌 Formulate the disentanglement of content and style in CLIP using a causal generative model.</li>
+      <li>📌 Propose augmented prompt-based contrastive learning to isolate content information.</li>
+      <li>📌 Demonstrate substantial gains in zero/few-shot accuracy and robustness across benchmarks.</li>
+      <li>📌 Validate via qualitative visualizations and ablations on multiple datasets.</li>
+    </ul>
+  </div>
+</div>
 
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <hr>
-      <div class="columns is-centered has-text-centered">
-      <h2 class="title is-3">Experimental Results</h2>
-      </div>
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/zero-shot_performance.png" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Zero-shot performance and resiliance against prompt perturbations.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/few-shot_performance.png" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Few-shot performance.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/adversarial_robustness.png" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Robustness against adversarial attacks.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/t-sne_visualization.png" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Qualitative analysis with t-SNE visualization on PACS dataset, Art Painting domain.
-      </h2>
+<!-- Teaser Figure -->
+<div class="container is-max-desktop">
+  <div class="section-plain" style="text-align:center;">
+    <img src="static/images/teaser_img.png" alt="Teaser Figure" style="max-width:96%;border-radius:1rem;">
+    <div class="figure-caption">
+      <b>Qualitative comparison:</b> Text augmentations (right) enable CLIP to focus on content, not just style.
     </div>
   </div>
 </div>
+
+<!-- Causal Model Figure -->
+<div class="container is-max-desktop">
+  <div class="section-plain" style="text-align:center;">
+    <h2 class="title is-3 has-text-centered">Latent Variable Modeling</h2>
+    <img src="static/images/generative_model.png" alt="Causal Generative Model" style="max-width:60%;border-radius:1rem;">
+    <div class="figure-caption">
+      <b>Latent generative processes:</b> Both image and text modalities share a latent space of content and style.
+    </div>
+  </div>
 </div>
-</section>
-<!-- End image carousel -->
 
+<!-- Method Overview -->
+<div class="container is-max-desktop">
+  <div class="section-plain" style="text-align:center;">
+    <h2 class="title is-3 has-text-centered">Method Overview</h2>
+      <img src="static/images/method_overview.png" alt="Method Overview" style="max-width:90%;border-radius:1rem;">
+    <div class="figure-caption">
+      <b>Approach:</b> Augmenting prompts in either modality helps CLIP learn robust content-aware features.
+    </div>
+  </div>
+</div>
 
-
-<!-- Youtube video -->
-<!-- <section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container"> -->
-      <!-- Paper video. -->
-      <!-- <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video"> -->
-            <!-- Youtube embed code here -->
-            <!-- <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
+<!-- Results (carousel or selected figures) -->
+<div class="container is-max-desktop">
+  <div class="section-highlight">
+    <h2 class="title is-3 has-text-centered">Experimental Results</h2>
+    <div style="text-align:center;">
+      <img src="static/images/zero-shot_performance.png" alt="Zero-shot performance" style="max-width:86%;margin-bottom:1.1rem;border-radius:1rem;">
+      <img src="static/images/t-sne_visualization.png" alt="t-SNE qualitative visualization" style="max-width:86%;border-radius:1rem;">
+      <div class="figure-caption">
+        Zero-shot classification accuracy (top) and t-SNE visualization of representations (bottom). See more in the <a href="https://arxiv.org/pdf/2311.16445" target="_blank">paper</a>.
       </div>
     </div>
   </div>
-</section> -->
-<!-- End youtube video -->
+</div>
 
+<!-- Key Takeaways -->
+<div class="container is-max-desktop">
+  <div class="section-plain">
+    <h2 class="title is-3 has-text-centered">Key Takeaways</h2>
+    <ul class="content" style="font-size:1.08em;">
+      <li><strong>✅ Augmented prompts</strong> (especially text) are powerful for disentangling content and style.</li>
+      <li><strong>✅ CLAP</strong> delivers robust and generalizable vision-language features, especially under distribution shifts.</li>
+      <li><strong>✅ Our framework is data efficient and plug-and-play</strong> for refining existing CLIP-like representations.</li>
+    </ul>
+  </div>
+</div>
 
-<!-- Video carousel -->
-<!-- <section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%"> -->
-            <!-- Your video file here -->
-            <!-- <source src="static/videos/carousel1.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%"> -->
-            <!-- Your video file here -->
-            <!-- <source src="static/videos/carousel2.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\ -->
-            <!-- Your video file here -->
-            <!-- <source src="static/videos/carousel3.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-      </div>
+<!-- BibTeX -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="bibtex-card">
+      <span class="bibtex-label">
+        📚 Cite this paper:
+        <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('bibtex-code').innerText);this.innerText='Copied!';setTimeout(()=>this.innerText='Copy',1300);">Copy</button>
+      </span>
+      <pre class="bibtex-pre"><code id="bibtex-code">@inproceedings{Cai2024CLAP,
+  title     = {CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts},
+  author    = {Yichao Cai and Yuhang Liu and Zhen Zhang and Javen Qinfeng Shi},
+  booktitle = {European Conference on Computer Vision (ECCV)},
+  pages     = {130--147},
+  year      = {2024}
+}</code></pre>
     </div>
   </div>
-</section> -->
-<!-- End video carousel -->
-
-
-<!-- Paper poster -->
-<!-- <section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <iframe  src="static/pdfs/poster_24x48.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section> -->
-<!--End paper poster -->
-
-
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>@Article{Cai2024CLAPIC,
-        author = {Yichao Cai and Yuhang Liu and Zhen Zhang and Javen Qinfeng Shi},
-        booktitle = {European Conference on Computer Vision},
-        pages = {130-147},
-        title = {CLAP: Isolating Content from Style Through Contrastive Learning with Augmented Prompts},
-        year = {2024}
-       }
-       </code></pre>
-    </div>
 </section>
-<!--End BibTex citation -->
 
-
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
-        </div>
-      </div>
-    </div>
+<!-- Footer -->
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      © 2024 Yichao Cai &middot; Based on the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> template.<br>
+      Licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
+    </p>
   </div>
 </footer>
 
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+</body>
+</html>
